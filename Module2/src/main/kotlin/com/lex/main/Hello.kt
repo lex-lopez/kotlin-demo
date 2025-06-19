@@ -1,4 +1,4 @@
-package com.lex.basic
+package com.lex.main
 
 fun main() {
     println("Hello ${name()}!")

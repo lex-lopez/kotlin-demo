@@ -18,7 +18,7 @@ class VariableTypes {
     }
 
     fun showCaseVariableTypes() {
-        println("Calling function for Variable types...")
+        println("\nCalling function for Variable types...")
         println("String: $greeting")
         println("Int: $number")
         println("Int: $string")

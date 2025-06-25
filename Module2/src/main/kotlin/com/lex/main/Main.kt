@@ -4,6 +4,7 @@ import com.lex.controlStructures.Color
 import com.lex.controlStructures.Conditionals
 import com.lex.controlStructures.LoopsAndRanges
 import com.lex.controlStructures.PetService
+import com.lex.exceptions.ExceptionThrowing
 import com.lex.functions.FunctionsTypes
 import com.lex.functions.FunctionsWithArgs
 import com.lex.functions.topLevel
@@ -29,6 +30,9 @@ fun main() {
 
     // Loops & Ranges
     testLoopsAndRanges()
+
+    // Exceptions
+    testExceptions()
 }
 
 fun name(): String {
@@ -124,4 +128,26 @@ fun testLoopsAndRanges() {
 
     recognizeChar = loopsAndRanges.recognizeCharacter('%')
     println("\nRecognize '%': $recognizeChar")
+}
+
+fun testExceptions() {
+    println("\nCalling function for Exceptions...")
+    val exceptionThrowing = ExceptionThrowing()
+
+    println("try to check percentage values between 1 and 100, should throw exception and value of variable should be false")
+    val isValidPercentage = try {
+        exceptionThrowing.checkPercentage(120)
+    } catch (e: IllegalArgumentException) {
+        println("Exception occurred, e: ${e.localizedMessage}")
+        false
+    }
+    assert(isValidPercentage == false)
+
+    var parsedNumber = exceptionThrowing.parseNumber("34")
+    println("Try to parse string into number, \"34\" should be valid: $parsedNumber")
+    assert(parsedNumber == 34)
+
+    parsedNumber = exceptionThrowing.parseNumber("3g")
+    println("Try to parse string into number, \"3g\" should not be valid, thus null should be expected: $parsedNumber")
+    assert(parsedNumber == null)
 }

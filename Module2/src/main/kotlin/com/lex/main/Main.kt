@@ -5,6 +5,8 @@ import com.lex.controlStructures.Conditionals
 import com.lex.controlStructures.LoopsAndRanges
 import com.lex.controlStructures.PetService
 import com.lex.exceptions.ExceptionThrowing
+import com.lex.extensionFunctions.lastChar
+import com.lex.extensionFunctions.repeatTimes
 import com.lex.functions.FunctionsTypes
 import com.lex.functions.FunctionsWithArgs
 import com.lex.functions.topLevel
@@ -33,6 +35,9 @@ fun main() {
 
     // Exceptions
     testExceptions()
+
+    // Extension functions
+    testExtensionFunctions()
 }
 
 fun name(): String {
@@ -150,4 +155,17 @@ fun testExceptions() {
     parsedNumber = exceptionThrowing.parseNumber("3g")
     println("Try to parse string into number, \"3g\" should not be valid, thus null should be expected: $parsedNumber")
     assert(parsedNumber == null)
+}
+
+fun testExtensionFunctions() {
+    println("\nCalling function for Extension functions...")
+    val regularString = "Hello World"
+    val lastChar = regularString.lastChar()
+    val repeatedString = regularString.repeatTimes(3)
+
+    println("\nLast char of \"$regularString\" is : $lastChar")
+    assert(regularString[regularString.length-1] == lastChar)
+
+    println("\nRepeated string of \"$regularString\" is: $repeatedString")
+    assert(regularString.repeat(3) == repeatedString)
 }
